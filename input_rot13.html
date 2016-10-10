@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="txt"></label><textarea id="txt"></textarea>
+</body>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    $("#txt").keypress(function (e) {
+        var rot = 13;
+        var array = [65, 97];
+        var $txt = $("#txt");
+        for (var i = 0; i < array.length; i++) {
+            for (var j = 0; j < 26; j++) {
+                var k = array[i] + j;
+                if (e.keyCode == k) {
+                    $txt.val($txt.val() + String.fromCharCode((k - array[i] + rot) % 26 + array[i]));
+                    e.preventDefault();
+                }
+            }
+        }
+    });
+</script>
+</html>
